@@ -1,12 +1,3 @@
-const { createTestScheduler } = require("jest");
-const singleTableErrors = require("../../tools/errors/singleTableErrors");
-const singleTableTestQueries = require("../../tools/errors/testQueries/singleTable");
-const {
-  returnsCorrectQuery,
-  returnsCorrectQueryColumns,
-} = require("../../tools/errors/testQueries/singleTableTests");
-const singleTable = require("./singleTable");
-
 const tableName = "table_name";
 const tableNameObj = { name: tableName };
 const conditions1 = [

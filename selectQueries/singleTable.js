@@ -1,4 +1,4 @@
-const singleTableErrors = require("../../tools/errors/singleTableErrors");
+const singleTableErrors = require("../tools/errors/singleTableErrors");
 
 const singleTable = (tableName, columns = [], conditions = []) => {
   const queryStrArr = ["SELECT"];

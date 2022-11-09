@@ -1,10 +1,11 @@
+const singleTable = require("./singleTable");
 const {
   columnsTestArray,
   tableNameArray,
   conditionsTestArray,
-} = require("../../tools/errors/testQueries/singleTableTests");
-const buildQuery = require("../../tools/testHelpers/buildQuery");
-const singleTable = require("./singleTable");
+  throwErrorsArray,
+} = require("../tools/testHelpers/singleTable/singleTableTests");
+const buildQuery = require("../tools/testHelpers/buildQuery");
 
 describe("Single Table Function Test Suite", () => {
   describe("Return Tests", () => {
@@ -87,7 +88,5 @@ describe("Single Table Function Test Suite", () => {
     });
   });
 
-  describe('Throws Errors', () => {
-    
-  })
+  describe("Throws Errors", () => {});
 });
