@@ -162,52 +162,84 @@ const conditionsTestArray = [
 ];
 
 const tableNameErrorObj = {
-  name: "tableName Parameter",
+  name: "Table Name Parameter",
   tests: [
     {
       test: "no tableName Parameter",
       error: singleTableErrors.noTableNameError,
+      value: [undefined, [], []],
+      type: ["undefined", "object", "object"],
     },
     {
       test: "typeof tableName is a number",
       error: singleTableErrors.tableNameTypeError,
-      value: 1,
-      type: "number",
+      value: [1, [], []],
+      type: ["number", "object", "object"],
     },
     {
       test: "typeof tableName is an array",
       error: singleTableErrors.tableNameTypeError,
-      value: ["table_name"],
-      type: "object",
+      value: [["table_name"], [], []],
+      type: ["object", "object", "object"],
     },
     {
       test: "if the wrong key name is included in tableName Object",
       error: singleTableErrors.tableNameWrongObjKey,
-      value: { wrongKey: "table_name" },
-      type: "object",
+      value: [{ wrongKey: "table_name" }, [], []],
+      type: ["object", "object", "object"],
     },
   ],
 };
 
 const columnsErrorObj = {
-  name: "columns Parameter",
+  name: "Columns Parameter",
   tests: [
     {
       test: "typeof columns is a number",
       error: singleTableErrors.columnsTypeError,
-      value: 1,
-      type: "number",
+      value: ["table_name", 1, []],
+      type: ["string", "number", "object"],
     },
     {
       test: "typeof columns is an object",
       error: singleTableErrors.columnsTypeError,
-      value: {},
-      type: "object",
+      value: ["table_name", {}, []],
+      type: ["string", "object", "object"],
     },
   ],
 };
 
-const throwErrorsArray = [tableNameErrorObj, columnsErrorObj];
+const conditionsErrorObj = {
+  name: "Conditions Parameter",
+  tests: [
+    {
+      test: "typeof conditions is not an Array or Object: Number",
+      error: singleTableErrors.conditionsTypeError,
+      value: ["table_name", [], 1],
+      type: ["string", "object", "number"],
+    },
+    {
+      test: "wrong keys available in conditions parameter",
+      error: singleTableErrors.missingConditionKeys,
+      value: [
+        "table_name",
+        [],
+        {
+          targ: "id",
+          act: ">",
+          value: "15",
+        },
+      ],
+      type: ["string", "object", "object"],
+    },
+  ],
+};
+
+const throwErrorsArray = [
+  tableNameErrorObj,
+  columnsErrorObj,
+  conditionsErrorObj,
+];
 
 module.exports = {
   tableNameArray,

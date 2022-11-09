@@ -88,5 +88,22 @@ describe("Single Table Function Test Suite", () => {
     });
   });
 
-  describe("Throws Errors", () => {});
+  describe("Throws Errors", () => {
+    throwErrorsArray.forEach((param) => {
+      describe(param.name, () => {
+        param.tests.forEach((test) => {
+          it(test.test, () => {
+            test.value.forEach((value, valInd) => {
+              expect(typeof value).toEqual(test.type[valInd]);
+            });
+            expect(() =>
+              singleTable(test.value[0], test.value[1], test.value[2]).toThrow(
+                test.error
+              )
+            );
+          });
+        });
+      });
+    });
+  });
 });
